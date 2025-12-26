@@ -18,16 +18,15 @@
             <table class="table-auto w-full border">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="border px-4 py-2 text-left w-1/4">Kelas</th>
                         <th class="border px-4 py-2 text-left">Daftar Siswa</th>
+                        <th class="border px-4 py-2 text-left w-1/4">Kelas</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($kelas_siswa as $ks)
                     <tr>
-                        <td class="border px-4 py-2 font-bold bg-gray-50">{{ $ks->nama_kelas }}</td>
                         <td class="border px-4 py-2">
-                            <div class="grid grid-cols-1 gap-2">
+                        <div class="grid grid-cols-1 gap-2">
                                 @forelse($ks->siswa as $s)
                                     <div class="flex justify-between items-center bg-white border border-gray-100 p-2 rounded shadow-sm">
                                         <span>{{ $s->nama_siswa }}</span>
@@ -43,6 +42,7 @@
                                 @endforelse
                             </div>
                         </td>
+                        <td class="border px-4 py-2 font-bold bg-gray-50">{{ $ks->nama_kelas }}</td>
                     </tr>
                     @endforeach
                 </tbody>

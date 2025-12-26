@@ -20,8 +20,8 @@
 
 1. **Clone repository**:
    ```bash
-   git clone <link-repo-anda>
-   cd <nama-folder>
+   git clone <"https://github.com/agusmuhamadgi/manage-sekolah.git">
+   cd <"manage-sekolah">
 
 2. **Instal dependensi:**:
     ```bash
@@ -29,6 +29,7 @@
     npm install && npm run dev
 
 3. **Konfigurasi Database**: 
+    '''bash
     Salin file .env.example ke .env
 
 4. **Migrasi & Generate Key**:
