@@ -18,7 +18,7 @@
             <table class="table-auto w-full border">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="border px-4 py-2 text-left">Daftar Siswa</th>
+                        <th class="border px-4 py-2 text-left">Nama Siswa</th>
                         <th class="border px-4 py-2 text-left w-1/4">Kelas</th>
                     </tr>
                 </thead>
@@ -29,7 +29,7 @@
                         <div class="grid grid-cols-1 gap-2">
                                 @forelse($ks->siswa as $s)
                                     <div class="flex justify-between items-center bg-white border border-gray-100 p-2 rounded shadow-sm">
-                                        <span>{{ $s->nama_siswa }}</span>
+                                        <span>• {{ $s->nama_siswa }}</span>
                                         <div class="flex gap-2">
                                             <button wire:click="edit({{ $s->id }})" class="text-blue-500 hover:underline text-xs">Edit</button>
                                             <button wire:click="delete({{ $s->id }})" 

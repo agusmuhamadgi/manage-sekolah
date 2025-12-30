@@ -8,44 +8,48 @@
                      Tambah Guru
                 </button>
             </div>
-
+            @if (session()->has('message'))
+                <div class="mb-4 text-green-600 font-bold p-2 bg-green-50 border border-green-200 rounded">
+                    {{ session('message') }}
+                </div>
+            @endif
             <table class="table-auto w-full border">
-    <thead>
-        <tr class="bg-gray-100">
-            <th class="border px-4 py-2 text-left">Nama Guru</th>
-            <th class="border px-4 py-2 text-left">Kelas</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($kelas_guru as $kg)
-        <tr>
-            <td class="border px-4 py-2">
-                @forelse($kg->guru as $g)
-                    <div class="flex justify-between items-center border-b last:border-0 py-2">
-                        <span>• {{ $g->nama_guru }}</span>
-                        
-                        <div class="flex gap-2">
-                            <button wire:click="edit({{ $g->id }})" 
-                                    class="text-blue-500 hover:text-blue-700 text-xs font-semibold">
-                                Edit
-                            </button>
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border px-4 py-2 text-left">Nama Guru</th>
+                        <th class="border px-4 py-2 text-left">Kelas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($kelas_guru as $kg)
+                    <tr>
+                        <td class="border px-4 py-2">
+                            @forelse($kg->guru as $g)
+                                <div class="flex justify-between items-center border-b last:border-0 py-2">
+                                    <span>• {{ $g->nama_guru }}</span>
+                                    
+                                    <div class="flex gap-2">
+                                        <button wire:click="edit({{ $g->id }})" 
+                                                class="text-blue-500 hover:text-blue-700 text-xs font-semibold">
+                                            Edit
+                                        </button>
 
-                            <button wire:click="delete({{ $g->id }})" 
-                                    wire:confirm="Apakah Anda yakin ingin menghapus guru ini?"
-                                    class="text-red-500 hover:text-red-700 text-xs font-semibold">
-                                Hapus
-                            </button>
-                        </div>
-                    </div>
-                @empty
-                    <span class="text-gray-400 italic text-sm">Belum ada guru</span>
-                @endforelse
-            </td>
-            <td class="border px-4 py-2 font-bold">{{ $kg->nama_kelas }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+                                        <button wire:click="delete({{ $g->id }})" 
+                                                wire:confirm="Apakah Anda yakin ingin menghapus guru ini?"
+                                                class="text-red-500 hover:text-red-700 text-xs font-semibold">
+                                            Hapus
+                                        </button>
+                                    </div>
+                                </div>
+                            @empty
+                                <span class="text-gray-400 italic text-sm">Belum ada guru</span>
+                            @endforelse
+                        </td>
+                        <td class="border px-4 py-2 font-bold">{{ $kg->nama_kelas }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
             @if($isOpen)
             <div class="fixed inset-0 flex items-center justify-center z-50">
@@ -75,7 +79,6 @@
                 </div>
             </div>
             @endif
-
         </div>
     </div>
 </div>

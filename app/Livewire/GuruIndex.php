@@ -48,30 +48,13 @@ class GuruIndex extends Component
             'kelas_id' => 'required|exists:kelas,id',
         ]);
 
-        Guru::updateOrCreate(['id' => $this->guru_id], [
+        Guru::updateOrCreate(['id' => $this->guru_id ?: null], [
         'nama_guru' => $this->nama_guru,
         'kelas_id' => $this->kelas_id,
        ]);
 
-        $this->resetInput();
-        session()->flash('message', $this->guru_id ? 'Guru diupdate!' : 'Guru ditambah!');
-    }
-
-    public function update()
-    {
-        $this->validate([
-            'nama_guru' => 'required',
-            'kelas_id' => 'required|exists:kelas,id',
-        ]);
-
-        $guru = Guru::find($this->guru_id);
-        $guru->update([
-            'nama_guru' => $this->nama_guru,
-            'kelas_id' => $this->kelas_id,
-        ]);
-
-        $this->resetInput();
-        session()->flash('message', 'Guru berhasil diupdate.');
+       session()->flash('message', $this->guru_id ? 'Guru berhasil diupdate!' : 'Guru berhasil ditambah!');
+       $this->closeModal();
     }
 
     public function delete($id)
@@ -83,6 +66,7 @@ class GuruIndex extends Component
     public function resetInput()
     {
         $this->nama_guru = '';
+        $this->guru_id = '';
         $this->kelas_id = '';
     }
 }
